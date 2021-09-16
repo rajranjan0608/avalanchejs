@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: 'ava-labs/avalanchego'
-          ref: ${{ github.ref == 'refs/heads/master' && 'master' || 'dev' }}
+          ref: 'v1.6.0-rc.2'
           path: 'avalanchego'
       - uses: actions/setup-node@v2
         with:
