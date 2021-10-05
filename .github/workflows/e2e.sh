@@ -1,5 +1,5 @@
 mount_spec=$(pwd):/avalanchejs/
-image=avaplatform/avalanche-testing:master
+image=avaplatform/avalanche-byzantine:master
 
 echo "$DOCKER_PASS" | docker login --username "$DOCKER_USERNAME" --password-stdin
 custom_params_json="{
