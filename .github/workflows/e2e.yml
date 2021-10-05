@@ -11,6 +11,11 @@ jobs:
           repository: 'ava-labs/avalanchego'
           ref: ${{ github.ref == 'refs/heads/master' && 'master' || 'dev' }}
           path: 'avalanchego'
+      - uses: actions/checkout@v2
+        with:
+          repository: 'ava-labs/avash'
+          ref: ${{ github.ref == 'refs/heads/master' && 'master' || 'dev' }}
+          path: 'avash'
       - uses: actions/setup-node@v2
         with:
           cache: yarn
@@ -24,8 +29,12 @@ jobs:
           sudo apt-get install musl-tools
           cd avalanchego
           STATIC_COMPILATION=1 ./scripts/build.sh
+      - name: static compilation of avash
+        run: |
+          cd avash
+          STATIC_COMPILATION=1 go build
       - name: avalanchejs e2e test
-        env: 
+        env:
           DOCKER_USERNAME: ${{ secrets.docker_username }}
           DOCKER_PASS: ${{ secrets.docker_pass }}
         run: .github/workflows/e2e.sh
