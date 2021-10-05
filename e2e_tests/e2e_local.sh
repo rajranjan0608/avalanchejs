@@ -1,12 +1,12 @@
 #!/bin/bash
 
-avalanche_testing_image=avaplatform/avalanche-testing:master
+avalanche_image=avaplatform/avalanchego:master
 
 dockerfile_contents=$(cat <<EOF
     ####################################################
-    # Adds avalanchego binary to avalanche-testing image
+    # Adds avalanchego binary to avalanchego image
     ####################################################
-    FROM $avalanche_testing_image
+    FROM $avalanche_image
     # Add dev deps
     RUN apt-get update && apt-get install -y git gcc wget
     # go 1.15 install
